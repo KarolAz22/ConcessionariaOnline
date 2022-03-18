@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}
+{% endblock %}
+
+{% block 'head' %}
+{% endblock %}
+
+
+{% block 'body' %}
+<div class="container" id="formMensagem">
+    <form method="post" action="#">
+        {% csrf_token %}
+        <div class=" form-group">
+            <label class="mt-3" for="nome">Nome:</label>
+            <input class="form-control" type="text" id="nome" name="name" placeholder="nome" required>
+
+            <label class="mt-3" for="inputEmail">Email:</label>
+            <input class="form-control" type="email" name="emailC" id="inputEmail" placeholder="email@example.com">
+
+            <label class="mt-3" for="inputTelefone">Telefone (Informe também o DDD):</label>
+            <input class="form-control" type="text" name="telefone" id="inputTelefone" placeholder="33 98888-8888">
+
+            <label class="mt-3" for="subject"> Mensagem: </label>
+            <textarea class="form-control" name="mensagem" id="subject" cols="30" rows="10" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+{% endblock %}

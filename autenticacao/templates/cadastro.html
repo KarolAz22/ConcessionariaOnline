@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'autenticacao/css/cadastro.css' %}">
+    
+{% endblock %}
+
+{% block 'title' %}Cadastre-se{% endblock %}
+{% block 'body' %}
+<div class="container-fluid pl-0 pr-0 ">
+    <div class="d-flex justify-content-center flex-wrap mt-5">
+        <div class="col-md-7 col-sm-10 mb-5 pb-5 " id="logo-e-letreiro">
+            <div class="logo-usuario d-flex justify-content-center">
+                <img src="{% static 'autenticacao/img/cadastre.png'%}" alt="logo usuário" width="100px">
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-7 col-sm-10">
+                    <h5 class="text-center titulo mt-2 mb-2">Cadastre-se para poder anunciar e também ver anúncios de melhores carros na região</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid ">
+    <!-- Logar -->
+    <form class="d-flex justify-content-center flex-wrap" method="POST" action="{% url 'cadastro' %}">
+        {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="col-md-7 col-sm-10 text-center alert {{message.tags}}">
+            {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+        <div class="col-md-7 col-sm-10 mb-1 ">
+            <label for="InputUsername" class="form-label">Nome de usuario</label>
+            <input name="username" type="text" class="form-control" id="InputUsername" aria-describedby="emailHelp" placeholder="username">
+        </div>
+        <div class="col-md-7 col-sm-10 mb-1">
+            <label class="form-label" for="inputEmail">Email</label>
+            <input class="form-control" name="email" type="text" " id="inputEmail" placeholder="name@example.com">
+        </div>
+        <!-- <div class="col-md-7 col-sm-10 mb-1">
+            <label class="form-label" for="inputEndereco">Rua</label>
+            <input class="form-control" name="endereco" id="inputEndereco" type="text" placeholder="Rua dos bobos">
+        </div>
+        <div class="col-md-7 col-sm-10 mb-1">
+            <label class="form-label" for="inputCidade" >Cidade</label>
+            <input class="form-control" type="text" name="cidade" id="inputCidade" placeholder="Diamantina">
+        </div>
+        <div class="col-md-7 col-sm-10 mb-1">
+            <label class="form-label" for="inputEstado" >Estado</label>
+            <input class="form-control" type="text" name="estado" id="inputEstado" placeholder="Minas Gerais">
+        </div> -->
+        <div class="col-md-7 col-sm-10 mb-1">
+            <label for="InputPassword" class="form-label">Senha</label>
+            <input type="password" name="senha" class="form-control" id="InputPassword" placeholder="***********">
+        </div>
+
+        <div class="col-md-7 col-sm-10"><input type="submit" class="btn btn-primary"></input></div>
+    </form>
+ </div>
+ <div class="d-flex justify-content-center flex-wrap">
+    <div class="col-md-7 col-sm-10 mt-5 pt-5 pb-5 " id="nao-possui-conta"">
+        <p class="text-center">Já é cadastrado?</p>
+        <p class="text-center"><a href="{% url 'logar' %}" class="btn btn-dark btn-sm">Faça login</a></p>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+<form action="{% url 'cadastro' %}" method="POST"> {% csrf_token %}
+    <h2 class="titulo_area_cadastrar">Cadastre-se</h2>
+    {% if messages %}
+        {% for i in messages %}
+            <div class="alert {{i.tags}}">
+                {{i}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <input name="username" class="input_cadastrar input_cadastrar_nome" type="text" placeholder="Username...">
+    <br>
+    <br>
+    <input name="email" class="input_cadastrar input_cadastrar_email" type="text" placeholder="Email...">
+    <br>
+    <br>
+    <input name="senha" class="input_cadastrar input_cadastrar_senha" type="password" placeholder="Senha...">
+    <br>
+    <input class="btn_cadastrar" type="submit" value="Cadastrar">
+</form>

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static '/plataforma/css/home.css' %}">
+{% endblock  %}
+{% block 'title' %}Página Inicial{% endblock %}
+{% block 'body' %}
+<div class="container-fluid d-flex justify-content-center align-items-center"  id="img-car-logo">
+  <div class="col-md-5">
+    <form action="{% url 'pesquisa' %}" method="POST" >
+      {% csrf_token %}
+      <div class="container d-flex flex-nowrap">
+        <input type="text" class="form-control" name="pesquisa"  placeholder="Search" id="input-pesquisa">
+        <button class="btn btn-dark" type="submit" id="botao-pesquisa"> <img src="{% static '/img/lupa.png' %}" alt="icone-lupa" id="lupa">
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container mt-2 ">  
+  <br>
+  <button type="button" class="btn_filtrar" data-toggle="modal"
+	 data-target="#exampleModal">
+    FILTRAR
+  </button>
+  <div class="row">
+      {% for veiculo in veiculos %}
+          <a href="{% url 'veiculo' veiculo.id %}" class="a_none">
+            <div class="col-md cont">
+              <div class="card_imovel">
+                <img class="img_capa_imovel" src="{{veiculo.imagem1.url}}">
+                <div class="informacoes_imoveis">
+                  <a class="a_none" href="{% url 'veiculo' veiculo.id %}"><h4 class="valor">R$ {{veiculo.valor}}</h4></a>
+                  {% if veiculo.tipo_combustivel  == 'G' %}
+                  <strong>
+                    <p>Gasolina</p>
+                  </strong>
+                  {% endif %}
+
+                  {% if veiculo.tipo_combustivel  == 'A' %}
+                  <strong>
+                    <p>Alcool</p>
+                  </strong>
+                  <strong>{% endif %}</strong>
+
+                  {% if veiculo.tipo_combustivel  == 'D' %}
+                  <strong>
+                    <p>Diesel</p>
+                  </strong>
+                  {% endif %}
+
+                  {% if veiculo.tipo_combustivel  == 'E' %}
+                  <strong>
+                    <p>Elétrico</p>
+                  </strong>
+                  {% endif %}
+
+                  {% if veiculo.tipo_combustivel  == 'F' %}
+                  <strong>
+                    <p>Flex</p>
+                  </strong>
+                  {% endif %}
+
+                  <strong>{{veiculo.rua}} <br> {{veiculo.bairro}} <br>{{veiculo.cidade}}</strong>
+                  <br>
+                  <p><strong>Modelo:</strong> {{veiculo.modelo}} <br>
+                    <strong>Ano: </strong>{{veiculo.ano}}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+      {% endfor %}
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title titulo_filtrar" id="exampleModalLabel">FILTRAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'home' %}" method="GET">
+          <label>Preço mínimo</label>
+          <br>
+          <input name="preco_minimo" class="form-control" type="number" placeholder="preço mínimo">
+
+          <br>
+
+          <label>Preço máximo</label>
+          <br>
+          <input name="preco_maximo" class="form-control" type="number" placeholder="preço máximo">
+          <br>
+          <input class="btn_filtrar_modal" type="submit" value="FILTRAR">
+          <br>
+
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
+{% endblock %}

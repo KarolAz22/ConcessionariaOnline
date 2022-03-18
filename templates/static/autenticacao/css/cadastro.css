@@ -1,0 +1,17 @@
+
+
+#logo-e-letreiro{
+    background-color: #F3D94D;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.titulo{
+    font-weight: bold;
+}
+
+#nao-possui-conta{
+    background-color: #F3D94D;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}

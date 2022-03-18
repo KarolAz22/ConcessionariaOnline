@@ -1,0 +1,37 @@
+#letra-dark{
+    color: black;
+}
+
+#img-car-logo{
+    background: url('/static/img/img-car-logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    padding: 0;
+    border: none;
+    margin: 0;
+    min-height: 50vh;
+    width: 100%;
+}
+
+#lupa{
+    width: 35px;
+}
+
+#botao-pesquisa{
+    width: 100px;
+    height: 50px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#input-pesquisa{
+    width: 400px;
+    height: 50px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'autenticacao/css/cadastro.css' %}">
+{% endblock %}
+
+{% block 'titulo' %}Logar{% endblock %}
+{% block 'body' %}
+<div class="container-fluid pl-0 pr-0 ">
+        <div class="d-flex justify-content-center flex-wrap mt-5">
+            <div class="col-md-7 col-sm-10 mb-5 pb-5 " id="logo-e-letreiro">
+                <div class="logo-usuario d-flex justify-content-center">
+                    <img src="{% static 'autenticacao/img/usuario_small.png'%}" alt="logo usuário" width="100px">
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-7 col-sm-10">
+                        <h5 class="text-center titulo mt-2 mb-2">Efetue login para aproveitar ao máximo nosso site</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid ">
+            <!-- Logar -->
+            <form class="d-flex justify-content-center flex-wrap" method="POST">
+                {% csrf_token %}
+                <div class="col-md-7 col-sm-10 mb-3 ">
+                  <label for="InputUsername" class="form-label">Nome de usuario</label>
+                  <input name="username" type="text" class="form-control" id="InputUsername" aria-describedby="emailHelp" placeholder="username">
+                </div>
+                <div class="col-md-7 col-sm-10 mb-3">
+                  <label for="InputPassword" class="form-label">Senha</label>
+                  <input name="senha" type="password" class="form-control" id="InputPassword" placeholder="***********">
+                </div>
+                <div class="col-md-7 col-sm-10">
+                    <input class="btn btn-primary" type="submit" value="Logar">
+                </div>
+            </form>
+        </div>
+            <!-- Logar -->
+            <div class="d-flex justify-content-center flex-wrap">
+                <div class="col-md-7 col-sm-10 mt-5 pt-5 pb-5 " id="nao-possui-conta"">
+                    <p class="text-center">Não possui uma conta?</p>
+                    <p class="text-center"><a href="{% url 'cadastro' %}" class="btn btn-dark btn-sm">Cadastre-se</a></p>
+                </div>
+            </div>
+</div>
+
+{% endblock %}
+
+
+
+
+<!-- Logar -->
+<!-- <form method="POST" action="{% url 'logar' %}">{% csrf_token %}
+    <input name="username" class="input_cadastrar input_cadastrar_email" type="text" placeholder="Username...">
+    <br>
+    <br>
+    <input name="senha" class="input_cadastrar input_cadastrar_senha" type="password" placeholder="Senha...">
+    <br>
+    <input class="btn_cadastrar" type="submit" value="Logar">
+</form> -->
+<!-- Logar -->

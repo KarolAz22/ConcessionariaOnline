@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}
+{% endblock %}
+
+{% block 'head' %}
+{% endblock %}
+
+
+{% block 'body' %}
+<div class="container-fluid mt-5">
+    <div class="row d-flex justify-content-around">
+        <div class="col-md-3" id="card-sobre">
+        <p class="text-center"><img src="{% static '/img/localizacao.png' %}" alt="icone localizacao" width="50px"></p>
+        <h5 class="text-center">Estamos localizados </h5>
+        <p class="text-center">Rua São Cristovão</p>
+        <p class="text-center">Bairro São Geraldo,Itamarandiba/MG</p>
+        <p class="text-center">CEP 39670-000</p>
+        </div>
+        <div class="col-md-3" id="card-sobre">
+        <p class="text-center"><img src="{% static '/img/missao.png' %}" alt="" width="50px"></p>
+        <h5 class="text-center">Nossa missão</h5>
+        <p class="text-center">Temos um intuito de oferecer a nossos clientes ótimos veiculos</p>
+        </div>
+        <div class="col-md-3" id="card-sobre">
+        <p class="text-center"><img src="{% static '/img/telefone.png' %}" alt="" width="50px"></p>
+        <h5 class="text-center">Telefones</h5>
+        <p class="text-center">(27) 98888-8888</p>
+        <p class="text-center">(27) 98886-5632</p>
+        <p class="text-center ml-3"><img src="{% static '/img/wppPretoEBranco.png' %}" alt="logo whatsapp preto e branco" width="20px">(27) 988569888</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
